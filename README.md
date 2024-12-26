@@ -4,18 +4,18 @@
 
 In the modern world of social media, there is a significant problem of toxicity in online comments, which creates a negative environment for communication. From abuse to insults, this can lead to a cessation of the exchange of thoughts and ideas among users. This project aims to develop a model capable of identifying and classifying different levels of toxicity in comments, using the power of [BERT(Bidirectional Encoder Representations from Transformers)](https://en.wikipedia.org/wiki/BERT_(language_model)) for text analysis.
 
-## Project Description
+# Project Description
 
 This project aims to develop a machine learning model that can effectively classify different levels of toxicity in online comments. We use advanced technologies such as BERT (Bidirectional Encoder Representations from Transformers) to analyze text and create a system that will help moderators and users create healthier and safer social media environments.
 
-## Technologies.
+# Technologies.
 
 - BERT (Bidirectional Encoder Representations from Transformers): A text analysis model used to produce contextualized word embeddings.
 - **PyTorch**: Libraries for working with deep learning.
 - Transformers: A library that provides access to BERT and other advanced machine learning models.
 - Docker: A platform for building, deploying, and managing containerized applications.
 
-## Dataset
+# Dataset
 
 We use [Toxic Comment Classification Challenge]() dataset for training machine learning models. The dataset have types of toxicity:
 - Toxic
