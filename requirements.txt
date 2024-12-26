@@ -1,5 +1,10 @@
-telebot==0.0.5
-openai==1.33.0
-gTTS==2.5.1
-SpeechRecognition==3.10.4
-pydub==0.25.1
+pandas==2.2.2
+matplotlib==3.9.2
+seaborn==0.13.2
+nltk==3.9.1
+spacy==3.8.2
+scikit-learn==1.6.0
+transformers==4.46.1
+torch==2.4.1+cu124
+streamlit==1.40.2
+numpy==2.0.2
