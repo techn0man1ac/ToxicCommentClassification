@@ -20,12 +20,12 @@ with col1:
 
 # Title column
 with col2:
-    st.title("Group 4. Comment classification using BERT")
+    st.title("Group 16.6. Comment classification using BERT")
 
 
 # Option menu
-selected = option_menu(menu_title=None, options=["Home", "Team", "Classify"],
-                       menu_icon="cast", default_index=0, icons=['house', 'people', 'play'],
+selected = option_menu(menu_title=None, options=["Home", "Team", 'Metrics', "Classify"],
+                       menu_icon="cast", default_index=0, icons=['house', 'people', 'clipboard-data', 'play'],
                        orientation="horizontal")
 
 
@@ -33,9 +33,6 @@ selected = option_menu(menu_title=None, options=["Home", "Team", "Classify"],
 if selected == 'Home':
     st.title('Welcome!')
     st.write('Use this app to analyse texts for toxicity.')
-    to_classify = st.button('Go to Classify')
-    if to_classify:
-        selected = 'Classify'
 
 
 # Team page
@@ -61,6 +58,11 @@ if selected == 'Team':
                 # Display member name and role
                 st.markdown(f"### {member['name']}")
                 st.markdown(f"*{member['role']}*")
+
+
+# Metric graphs and info page
+if selected == 'Metrics':
+    pass
 
 
 # Classification page
