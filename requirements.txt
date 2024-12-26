@@ -1,7 +1,5 @@
-streamlit
-streamlit-option-menu
-pillow
-tensorflow
-keras
-matplotlib
-numpy
+telebot==0.0.5
+openai==1.33.0
+gTTS==2.5.1
+SpeechRecognition==3.10.4
+pydub==0.25.1
