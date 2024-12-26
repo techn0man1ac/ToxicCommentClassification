@@ -15,16 +15,6 @@ This project aims to develop a machine learning model that can effectively class
 - Transformers: A library that provides access to BERT and other advanced machine learning models.
 - Docker: A platform for building, deploying, and managing containerized applications.
 
-## Dataset
-
-We use [Toxic Comment Classification Challenge]() dataset for training machine learning models. The dataset have types of toxicity:
-- Toxic
-- Severe_toxic
-- Obscene
-- Threat
-- Insult
-- Identity_hate
-
 # Mission 
 The mission of our project is to create a reliable and accurate machine learning model that can effectively classify different levels of toxicity in online comments. We plan to use advanced technologies such as BERT (Bidirectional Encoder Representations from Transformers) to analyze text and create a system that will help moderators and users create healthier and safer social media environments.
 
