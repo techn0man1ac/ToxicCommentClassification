@@ -1,13 +1,34 @@
 import streamlit as st
 from PIL import Image
-import streamlit as st
 import numpy as np
 import pandas as pd
-from tensorflow.keras.models import load_model
+from transformers import BertTokenizer, BertForSequenceClassification
+import torch
 from streamlit_option_menu import option_menu
+import matplotlib.pyplot as plt
+from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
+import plotly.figure_factory as ff
 
-# Model load
-# model1 = load_model('some_model.h5')
+# Toxicity labels
+label_list = ['toxic', 'severe_toxic', 'obscene', 
+				'threat', 'insult', 'identity_hate']
+
+def predict_toxicity(texts, model, tokenizer):
+    model.eval()
+    
+    # Токенізація введених текстів
+    encodings = tokenizer(texts, padding=True, truncation=True, return_tensors='pt', max_length=128)
+    
+    # Передбачення
+    with torch.no_grad():
+        outputs = model(**encodings)
+        logits = outputs.logits
+        predictions = torch.sigmoid(logits) 
+        
+    predicted_labels = (predictions.cpu().numpy() > 0.5).astype(int)
+    
+    return predicted_labels[0]
+
 
 # Create two columns
 col1, col2 = st.columns([1, 4])
@@ -62,17 +83,54 @@ if selected == 'Team':
 
 # Metric graphs and info page
 if selected == 'Metrics':
-    pass
+    
+    # Assuming you have the `y_true` and `y_pred` (ground truth and predictions)
+    y_true = [0, 1, 0, 1, 0, 1]  # Example true values
+    y_pred = [0, 0, 0, 1, 1, 1]  # Example predicted values
+    columns = ['0', '1']  # Example classes
+
+    # Compute the confusion matrix
+    matrix = confusion_matrix(y_true, y_pred)
+
+    # Create a Plotly figure with enhancements
+    fig = ff.create_annotated_heatmap(
+        z=matrix,
+        x=columns,
+        y=columns,
+        colorscale='Blues',
+        showscale=True,  # Add the color scale bar
+        colorbar_title='Count',  # Title for the color scale
+        colorbar_tickprefix=' ',  # Optional: clean up tick labels if needed
+    )
+
+    # Customize layout for better visuals
+    fig.update_layout(
+        title='Confusion Matrix',
+        xaxis=dict(title='Predicted Labels'),
+        yaxis=dict(title='True Labels'),
+        autosize=True,
+        xaxis_tickangle=-45,  # Optional: Angle the x-axis ticks for better readability
+        yaxis_tickangle=45,   # Optional: Angle the y-axis ticks for better readability
+    )
+
+    # Display the plot in Streamlit
+    st.plotly_chart(fig)
 
 
 # Classification page
 elif selected == 'Classify':
 
-    # Toxicity labels
-    labels = ['toxic', 'severe_toxic', 'obscene', 'threat', 'insult', 'identity_hate']
+    # Шлях до збереженої моделі
+    output_dir = "saved_model"
+
+    # Завантаження збереженої моделі та токенізатора
+    bert_model = BertForSequenceClassification.from_pretrained(output_dir)
+    bert_tokenizer = BertTokenizer.from_pretrained(output_dir)
+
+    bert_model.to('cpu')
 
     # Model selectbox
-    model_choice = st.selectbox('Choose your model', ['model1'])
+    model_choice = st.selectbox('Choose your model', ['BERT'])
 
     # User's comment input
     user_comment = st.text_area('Enter your comment here')
@@ -83,25 +141,24 @@ elif selected == 'Classify':
     if uploaded_file is not None:
         user_comment = uploaded_file.read().decode("utf-8")
 
+    user_comment = [user_comment]
+
     # Toxicity probabilities checkbox
-    detailed_classification = st.checkbox('Display toxicity probabilities')
+    detailed_classification = st.checkbox('Display detailed toxicity')
 
     classify = st.button('Classify')
     
     if classify:
 
         # Model prediciton
-        # result = model_choice.predict(user_comment)
+        prediction = predict_toxicity(user_comment, bert_model, bert_tokenizer)
 
-        # Example array
-        result = np.array([1, 2, 3, 4, 5, 6], dtype= float)
+        is_toxic = True if True in (prediction > 0.5) else False
 
-        is_toxic = True if True in (result > 0.1) else False
-
-        st.write('The comment is:', 'toxic.' if is_toxic == True else 'not toxic.')
+        st.write('The overall comment is:', 'toxic.' if is_toxic == True else 'not toxic.')
 
         # Display bar chart
         if detailed_classification:
-            data = pd.DataFrame({'Label': labels, 'Value': result})
+            data = pd.DataFrame({'Label': label_list, 'Value': prediction})
             data.set_index('Label', inplace=True)
             st.bar_chart(data['Value'])
