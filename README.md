@@ -1,6 +1,6 @@
 # Toxic Comment Classification system by "Team 16.6"
 
-![Team 16.6 logo](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/imgs/team16_6_Logo.png)
+![Team 16.6 logo](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/frontend/imgs/team16_6_Logo.png)
 
 In the modern world of social media, there is a significant problem of toxicity in online comments, which creates a negative environment for communication. From abuse to insults, this can lead to a cessation of the exchange of thoughts and ideas among users. This project aims to develop a model capable of identifying and classifying different levels of toxicity in comments, using the power of [BERT(Bidirectional Encoder Representations from Transformers)](https://en.wikipedia.org/wiki/BERT_(language_model)) for text analysis.
 
