@@ -8,3 +8,5 @@ transformers==4.46.1
 torch==2.4.1+cu124
 streamlit==1.40.2
 numpy==2.0.2
+attrs==24.3.0
+sentencepiece==0.2.0
