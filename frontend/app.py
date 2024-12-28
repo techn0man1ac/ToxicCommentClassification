@@ -2,36 +2,27 @@ import streamlit as st
 from PIL import Image
 import numpy as np
 import pandas as pd
-from transformers import BertTokenizer, BertForSequenceClassification
 import torch
+from transformers import BertTokenizer, BertForSequenceClassification
+from transformers import AlbertTokenizer, AlbertForSequenceClassification
+from transformers import DistilBertTokenizer, DistilBertForSequenceClassification
+from model_func import predict_toxicity
 from streamlit_option_menu import option_menu
-import matplotlib.pyplot as plt
-from sklearn.metrics import confusion_matrix, ConfusionMatrixDisplay
 import plotly.figure_factory as ff
+import ast
+
 
 # Toxicity labels
 label_list = ['toxic', 'severe_toxic', 'obscene', 
 				'threat', 'insult', 'identity_hate']
 
-def predict_toxicity(texts, model, tokenizer):
-    model.eval()
-    
-    # Токенізація введених текстів
-    encodings = tokenizer(texts, padding=True, truncation=True, return_tensors='pt', max_length=128)
-    
-    # Передбачення
-    with torch.no_grad():
-        outputs = model(**encodings)
-        logits = outputs.logits
-        predictions = torch.sigmoid(logits) 
-        
-    predicted_labels = (predictions.cpu().numpy() > 0.5).astype(int)
-    
-    return predicted_labels[0]
-
+# Model directory
+bert_model_dir = "saved_models/bert"
+albert_model_dir = "saved_models/albert"
+distilbert_model_dir = "saved_models/distilbert"
 
 # Create two columns
-col1, col2 = st.columns([1, 4])
+col1, col2 = st.columns([1, 5])
 
 # Image column
 with col1:
@@ -41,11 +32,11 @@ with col1:
 
 # Title column
 with col2:
-    st.title("Group 16.6. Comment classification using BERT")
+    st.title('Toxic Comment Classification System by "Team 16.6"')
 
 
 # Option menu
-selected = option_menu(menu_title=None, options=["Home", "Team", 'Metrics', "Classify"],
+selected = option_menu(menu_title=None, options=["Home", "About", 'Metrics', "Classify"],
                        menu_icon="cast", default_index=0, icons=['house', 'people', 'clipboard-data', 'play'],
                        orientation="horizontal")
 
@@ -57,19 +48,18 @@ if selected == 'Home':
 
 
 # Team page
-if selected == 'Team':
-    st.title('Our Team')
-
-    st.markdown("---")
+if selected == 'About':
+    st.title('Our Team:')
 
     team = [
-        {"name": "Serhii Trush", "role": "Team Lead"},
-        {"name": "Oleksandr Kovalenko", "role": "SCRUM Master"},
-        {"name": "Aliona Mishchenko", "role": "Data Scientist"},
-        {"name": "Ivan Shkvir", "role": "Backend Developer"},
-        {"name": "Oleksii Yeromenko", "role": "Frontend Developer"},
-        {"name": "Polina Mamchur", "role": "Creative Director"}
+        {"name": "Serhii Trush", "role": "Team Lead", "github": "https://github.com/techn0man1ac"},
+        {"name": "Oleksandr Kovalenko", "role": "SCRUM Master", "github": "https://github.com/AlexandrSergeevichKovalenko"},
+        {"name": "Aliona Mishchenko", "role": "Data Scientist", "github": "https://github.com/Alena-Mishchenko"},
+        {"name": "Ivan Shkvir", "role": "Backend Developer", "github": "https://github.com/IvanShkvyr"},
+        {"name": "Oleksii Yeromenko", "role": "Frontend Developer", "github": "https://github.com/oleksii-yer"},
+        {"name": "Polina Mamchur", "role": "Creative Director", "github": "https://github.com/polinamamchur"}
     ]
+
 
     # Display team members in columns
     for i in range(0, len(team), 2):  # Display 2 members per row
@@ -77,60 +67,92 @@ if selected == 'Team':
         for col, member in zip(cols, team[i:i+2]):
             with col:
                 # Display member name and role
-                st.markdown(f"### {member['name']}")
+                st.markdown(f"### [{member['name']}]({member['github']})")
                 st.markdown(f"*{member['role']}*")
+
+    st.markdown("---")
+
+    st.title('What is this app about?')
+
+    st.write('This app can be used to classify any given comment or text based on its toxicity.')
+    st.write('Three BERT-based models in total have been trained and developed.')
 
 
 # Metric graphs and info page
 if selected == 'Metrics':
-    
-    # Assuming you have the `y_true` and `y_pred` (ground truth and predictions)
-    y_true = [0, 1, 0, 1, 0, 1]  # Example true values
-    y_pred = [0, 0, 0, 1, 1, 1]  # Example predicted values
-    columns = ['0', '1']  # Example classes
+    model_choice = st.selectbox('Choose your model', ['BERT', 'ALBERT', 'DISTILBERT'])
 
-    # Compute the confusion matrix
-    matrix = confusion_matrix(y_true, y_pred)
+    metrics_df = pd.read_csv('data/bert_metrics.csv')
+    conf_matrix_df = pd.read_csv('data/confusion_matrix.csv')
 
-    # Create a Plotly figure with enhancements
-    fig = ff.create_annotated_heatmap(
-        z=matrix,
-        x=columns,
-        y=columns,
-        colorscale='Blues',
-        showscale=True,  # Add the color scale bar
-        colorbar_title='Count',  # Title for the color scale
-        colorbar_tickprefix=' ',  # Optional: clean up tick labels if needed
-    )
 
-    # Customize layout for better visuals
-    fig.update_layout(
-        title='Confusion Matrix',
-        xaxis=dict(title='Predicted Labels'),
-        yaxis=dict(title='True Labels'),
-        autosize=True,
-        xaxis_tickangle=-45,  # Optional: Angle the x-axis ticks for better readability
-        yaxis_tickangle=45,   # Optional: Angle the y-axis ticks for better readability
-    )
+    # Assuming `metrics_df` contains your metrics data
+    metrics_df = pd.DataFrame({
+        'Metric': ['Accuracy', 'Precision', 'Recall'],
+        'Value': [0.9382, 0.9607, 0.9092]
+    })
 
-    # Display the plot in Streamlit
-    st.plotly_chart(fig)
+    # Displaying model metrics as a table
+    st.write('### Model Metrics:')
+    metrics_df_reset = metrics_df.reset_index(drop=True)
+
+    # Display the table without the index column
+    st.dataframe(metrics_df_reset, hide_index=True)
+
+    for i, row in conf_matrix_df.iterrows():
+
+        matrix = [[row['FN'], row['TP']], [row['TN'], row['FP']]]
+        columns_x = [f'Predicted not {label_list[i]}', f'Predicted {label_list[i]}']  # Example classes
+        columns_y = [f'{label_list[i]}', f'Not {label_list[i]}']
+
+
+        # Create a Plotly figure with enhancements
+        fig = ff.create_annotated_heatmap(
+            z=matrix,
+            x=columns_x,
+            y=columns_y,
+            colorscale='Blues',
+            showscale=True,  # Add the color scale bar
+            colorbar_title='Count',  # Title for the color scale
+            colorbar_tickprefix=' ',  # Optional: clean up tick labels if needed
+        )
+
+        # Customize layout for better visuals
+        fig.update_layout(
+            title='Confusion Matrix',
+            xaxis=dict(title='Predicted Labels'),
+            yaxis=dict(title='True Labels'),
+            autosize=True,
+        )
+
+        # Display the plot in Streamlit
+        st.plotly_chart(fig)
 
 
 # Classification page
 elif selected == 'Classify':
 
-    # Шлях до збереженої моделі
-    output_dir = "saved_model"
-
     # Завантаження збереженої моделі та токенізатора
-    bert_model = BertForSequenceClassification.from_pretrained(output_dir)
-    bert_tokenizer = BertTokenizer.from_pretrained(output_dir)
+    bert_model = BertForSequenceClassification.from_pretrained(bert_model_dir)
+    bert_tokenizer = BertTokenizer.from_pretrained(bert_model_dir)
+
+    albert_model = AlbertForSequenceClassification.from_pretrained(albert_model_dir)
+    albert_tokenizer = AlbertTokenizer.from_pretrained(albert_model_dir)
+
+    distilbert_model = DistilBertForSequenceClassification.from_pretrained(distilbert_model_dir)
+    distilbert_tokenizer = DistilBertTokenizer.from_pretrained(distilbert_model_dir)
 
     bert_model.to('cpu')
 
     # Model selectbox
-    model_choice = st.selectbox('Choose your model', ['BERT'])
+    model_choice = st.selectbox('Choose your model', ['BERT', 'ALBERT', 'DISTILBERT'])
+
+    if model_choice == 'BERT':
+        model, tokenizer = bert_model, bert_tokenizer
+    elif model_choice == 'ALBERT':
+        model, tokenizer = albert_model, albert_tokenizer
+    else:
+        model, tokenizer = distilbert_model, distilbert_tokenizer
 
     # User's comment input
     user_comment = st.text_area('Enter your comment here')
@@ -151,7 +173,7 @@ elif selected == 'Classify':
     if classify:
 
         # Model prediciton
-        prediction = predict_toxicity(user_comment, bert_model, bert_tokenizer)
+        prediction = predict_toxicity(user_comment, model, tokenizer)
 
         is_toxic = True if True in (prediction > 0.5) else False
 
