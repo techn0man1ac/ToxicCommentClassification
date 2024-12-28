@@ -86,11 +86,7 @@ if selected == 'Metrics':
     conf_matrix_df = pd.read_csv('data/confusion_matrix.csv')
 
 
-    # Assuming `metrics_df` contains your metrics data
-    metrics_df = pd.DataFrame({
-        'Metric': ['Accuracy', 'Precision', 'Recall'],
-        'Value': [0.9382, 0.9607, 0.9092]
-    })
+    metrics_df = pd.read_csv('data/bert_metrics.csv')
 
     # Displaying model metrics as a table
     st.write('### Model Metrics:')
@@ -112,9 +108,9 @@ if selected == 'Metrics':
             x=columns_x,
             y=columns_y,
             colorscale='Blues',
-            showscale=True,  # Add the color scale bar
-            colorbar_title='Count',  # Title for the color scale
-            colorbar_tickprefix=' ',  # Optional: clean up tick labels if needed
+            showscale=True,
+            colorbar_title='Count',
+            colorbar_tickprefix=' ',
         )
 
         # Customize layout for better visuals

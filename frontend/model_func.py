@@ -1,5 +1,4 @@
 import torch
-from torch.utils.data import TensorDataset, DataLoader
 
 
 def predict_toxicity(input_text, model, tokenizer, device='cpu'): 
@@ -8,7 +7,7 @@ def predict_toxicity(input_text, model, tokenizer, device='cpu'):
         input_text,
         truncation=True,
         padding=True,
-        max_length=128,  # Ensure compatibility with the model
+        max_length=128,
         return_tensors="pt"
     ).to(device)
 
@@ -26,4 +25,4 @@ def predict_toxicity(input_text, model, tokenizer, device='cpu'):
     # Threshold predictions and convert to binary labels
     predicted_labels = (predictions.cpu().numpy() > 0.5).astype(int)
     
-    return predicted_labels[0]  # Return as a simple list
+    return predicted_labels[0]
