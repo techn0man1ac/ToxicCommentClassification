@@ -32,7 +32,7 @@ with col1:
 
 # Title column
 with col2:
-    st.title('Toxic Comment Classification System by "Team 16.6"')
+    st.title('Toxic Comment Classification System')
 
 
 # Option menu
@@ -128,7 +128,7 @@ if selected == 'Metrics':
 # Classification page
 elif selected == 'Classify':
 
-    # Завантаження збереженої моделі та токенізатора
+    # Load saved model and tokenizer
     bert_model = BertForSequenceClassification.from_pretrained(bert_model_dir)
     bert_tokenizer = BertTokenizer.from_pretrained(bert_model_dir)
 
