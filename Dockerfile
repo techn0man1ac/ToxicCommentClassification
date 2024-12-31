@@ -11,7 +11,7 @@ WORKDIR $APP_HOME
 # Copy other files to the working directory of the container
 COPY frontend/ .
 
-COPY requirements.txt .
+COPY requirements.txt requirements.txt
 
 # Install dependencies inside the container
 RUN pip install -r requirements.txt
@@ -20,4 +20,4 @@ RUN pip install -r requirements.txt
 EXPOSE 8501
 
 # Let's run our application inside the container
-ENTRYPOINT [“streamlit”, “run”, “app.py”]
+ENTRYPOINT ["streamlit", "run", "app.py"]
