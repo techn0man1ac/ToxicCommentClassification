@@ -5,7 +5,7 @@ import streamlit as st
 logo_paths = [
     "imgs/GoIT.png",
     "imgs/python.png",
-    "imgs/pyTorch.png",
+    "imgs/pytorch.png",
     "imgs/nvidia.png",
     "imgs/streamlit.png",
     "imgs/kaggle.png",
