@@ -2,7 +2,7 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 from PIL import Image
 from home import home_page
-from about import about_page
+from team import team_page
 from metrics import metrics_page
 from classify import classify_page
 
@@ -21,7 +21,7 @@ with col2:
 
 
 # Option menu
-selected = option_menu(menu_title=None, options=["Home", "About", 'Metrics', "Classify"],
+selected = option_menu(menu_title=None, options=["Home", "Team", 'Metrics', "Classify"],
                        menu_icon="cast", default_index=0, icons=['house', 'people', 'clipboard-data', 'play'],
                        orientation="horizontal")
 
@@ -32,8 +32,8 @@ if selected == 'Home':
 
 
 # Team page
-if selected == 'About':
-    about_page()
+if selected == 'Team':
+    team_page()
 
 
 # Metric graphs and info page
