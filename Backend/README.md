@@ -1,5 +1,6 @@
-# ToxicCommentClassification
+# Source code training models
 
-![Team 16.6 logo](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/imgs/team16_6_Logo.png)
+This is where the source code for training models is stored, it is located in the `Models` directory and is made in the Jupiter notebook format.
+Before training the models, we performed an Exploratory Data Analysis, which can be found here:
 
-Made by Team 16.6
+https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Data_science
