@@ -13,7 +13,7 @@ This project aims to develop a machine learning model that can effectively class
 - [Transformers](https://huggingface.co/docs/transformers/index): A library that provides access to BERT and other advanced machine learning models.
 - [Docker](https://www.docker.com/): A platform for building, deploying, and managing containerized applications.
 
-# Dataset
+# Dataset(EDA)
 
 To train the machine learning models, we used [Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/) dataset. 
 The dataset have types of toxicity:
@@ -26,38 +26,38 @@ The dataset have types of toxicity:
 
 After [Exploratory Data Analysis](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Data_science), we found that the dataset had an `imbalance of classes`, and this had a bad impact on model training.
 
-# Data processing
+# Data processing(data science)
 ...
 
-# Machine learning
+# Machine learning(back end)
+
+To solve the problem of the application, we have chosen 3 popular architectures, such as [BERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased), [ALBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert), [DistilBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert).
 
 ## BERT
 
 This project demonstrates toxic comment classification using the [bert-base-uncased](https://huggingface.co/google-bert/bert-base-uncased) model from the BERT family.
 
-### Summary Highlights
-
-#### 1. **Toxic Comment Classification with BERT**
+### 1. **Toxic Comment Classification with BERT**
 - Utilized the `bert-base-uncased` model with PyTorch for flexibility and ease of use.  
 - Seamlessly integrated with Hugging Face Transformers.  
 - Training accelerated by ~30x using a GPU, efficiently handling BERT’s computational demands.
 
-#### 2. **Dataset Balancing**
+### 2. **Dataset Balancing**
 - Addressed dataset imbalance (90% non-toxic, 10% toxic) using oversampling with `sklearn`.  
 - Ensured rare toxic categories received equal attention by balancing class distributions.  
 - Improved model performance in recognizing rare toxic classes.
 
-#### 3. **Key Techniques**
+### 3. **Key Techniques**
 - **Tokenization**: Preprocessed data tokenized using `BertTokenizer`.  
 - **Loss Function**: Used `BCEWithLogitsLoss` with weighted loss for rare class emphasis.  
 - **Gradient Clipping**: Optimized training stability with gradient clipping (`max_norm`).  
 - **Hyperparameter Tuning**: Tuned batch size, learning rate, and epochs using Optuna.  
 
-#### 4. **Threshold Optimization**
+### 4. **Threshold Optimization**
 - Used `itertools.product` to find optimal thresholds for each class.  
 - Improved recall and F1-score (by 1-1.5%) for better multi-label classification.
 
-#### 5. **Performance and Key Model Details**
+### 5. **Performance and Key Model Details**
 - **Validation Metrics**:  
   - Accuracy: 0.95  
   - Precision: 0.97  
@@ -74,13 +74,14 @@ This project demonstrates toxic comment classification using the [bert-base-unca
 
 ## ALBERT
 ...
+
 ## DistilBERT
 ...
 
 # How to install
 ...
 
-# How to use
+# How to use(front end)
 ...
 
 # Mission 
