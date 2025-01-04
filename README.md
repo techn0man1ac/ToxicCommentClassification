@@ -101,4 +101,5 @@ This project is a group work published under the [MIT license](https://github.co
 # 👏 Acknowledgments
 
 🎓 This project was developed by a team of professionals as a graduation thesis of the [GoIT Data Science](https://goit.global/ua/courses/python-ds/) course.
+
 🎉 **Thank you for exploring our project! Together, we can make online spaces healthier and more respectful.**
