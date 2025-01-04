@@ -1,36 +1,68 @@
-# Toxic Comment Classification system by "Team 16.6"
+# Toxic Comment Classification using BERT (`bert-base-uncased`)
 
-![Team 16.6 logo](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/frontend/imgs/team16_6_Logo.png)
+This project demonstrates how to classify toxic comments using the `bert-base-uncased` model from the BERT family. Below are the key highlights of the implementation:
 
-In the modern world of social media, there is a significant problem of toxicity in online comments, which creates a negative environment for communication. From abuse to insults, this can lead to a cessation of the exchange of thoughts and ideas among users. This project aims to develop a model capable of identifying and classifying different levels of toxicity in comments, using the power of [BERT(Bidirectional Encoder Representations from Transformers)](https://en.wikipedia.org/wiki/BERT_(language_model)) for text analysis.
+## Key Highlights
 
-# Project Description
+### 1. Using PyTorch
+The PyTorch library was chosen for this project due to:
+- Its flexibility and ease of use, making it ideal for deep learning experiments.
+- Strong community support and a wide range of available pre-trained models.
+- Seamless integration with the Hugging Face `transformers` library.
 
-This project aims to develop a machine learning model that can effectively classify different levels of toxicity in online comments. We use advanced technologies such as BERT (Bidirectional Encoder Representations from Transformers) to analyze text and create a system that will help moderators and users create healthier and safer social media environments.
+### 2. Dataset Imbalance and Oversampling
+The original dataset was highly imbalanced:
+- **90%** of the comments were non-toxic, while only **10%** were toxic.
+- Among toxic comments, there was significant class imbalance across different toxic categories.
 
-# Technologies.
+#### Solution:
+- The classes were balanced using the `resample` function from `sklearn.utils`.
+- The number of toxic comments was equalized to the number of non-toxic comments.
+- Oversampling rare classes ensured the model paid equal attention to all categories.
 
-- BERT (Bidirectional Encoder Representations from Transformers): A text analysis model used to produce contextualized word embeddings.
-- **PyTorch**: Libraries for working with deep learning.
-- Transformers: A library that provides access to BERT and other advanced machine learning models.
-- Docker: A platform for building, deploying, and managing containerized applications.
+#### Problem Addressed:
+Before oversampling, the model struggled to classify rare toxic classes and often ignored them. Balancing the dataset mitigated this issue, improving the model's ability to recognize rare classes.
 
-# Dataset
+### 3. Tokenization
+After data preprocessing, the new dataset was tokenized using `BertTokenizer`. This step prepared the data for input into the BERT model.
 
-We use [Toxic Comment Classification Challenge]() dataset for training machine learning models. The dataset have types of toxicity:
-- Toxic
-- Severe_toxic
-- Obscene
-- Threat
-- Insult
-- Identity_hate
+### 4. Accelerated Training with GPU
+The training process utilized a GPU, which:
+- Improved the training speed by approximately **30 times** compared to using a CPU.
+- Enabled efficient handling of the computational demands of the BERT model.
 
-# Mission 
-The mission of our project is to create a reliable and accurate machine learning model that can effectively classify different levels of toxicity in online comments. We plan to use advanced technologies such as BERT (Bidirectional Encoder Representations from Transformers) to analyze text and create a system that will help moderators and users create healthier and safer social media environments.
+### 5. Loss Function: BCEWithLogitsLoss
+The loss function used was **Binary Cross-Entropy with Logits (BCEWithLogitsLoss)**. This loss function is well-suited for multi-label classification because:
+- It combines the sigmoid activation function with binary cross-entropy loss.
+- It measures the difference between predicted probabilities and true binary labels.
 
-# Vision
-Our vision is to make online communication safe and comfortable for everyone. We want to build a system that not only can detect toxic comments, but also helps to understand the context and tries to reduce the number of such messages. We want to create a tool that will be used not only by moderators, but also by every user to provide a safe environment for the exchange of thoughts and ideas.
+#### Weighted Loss:
+Class weights were computed as the inverse frequency of each class. Rare classes received higher weights, emphasizing their importance and preventing the model from ignoring them.
 
-# Licence
+### 6. Hyperparameter Tuning with Optuna
+The **Optuna** library was used to optimize key hyperparameters:
+- **Batch size**: `32`
+- **Learning rate**: `3.50425473e-5`
+- **Number of epochs**: `2`
+- **Max norm**: `0.714110939` (used for gradient clipping to stabilize training)
 
-This project is a group work published under the [MIT license](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/LICENSE) , and all project contributors are listed in the license text.
+#### Gradient Clipping:
+- Gradient clipping constrains the norm (magnitude) of gradients to prevent:
+  - **Exploding gradients**: Large gradients that disrupt the training process.
+  - **Numerical instability**: Errors caused by overly large weight updates.
+- By including `max_norm` in the hyperparameter search, the stability of the training process was optimized alongside the learning rate and batch size.
+
+### 7. Optimizing Thresholds for Multi-Label Classification
+The `product` function from Python's `itertools` library was used to find the best thresholds for each class. These thresholds determine when a class is considered positive.
+
+#### Impact of Optimized Thresholds:
+- Without class-specific thresholds, metrics (especially **recall**) were approximately **1-1.5% lower**.
+- **F1-score** was used to optimize these thresholds. The formula for F1-score is:
+
+F1 = 2 * (Precision * Recall) / (Precision + Recall)
+
+### 8. Model Performance on Validation Data
+Using all the techniques mentioned above, the model achieved the following metrics on the validation dataset:
+- **Accuracy**: `0.95`
+- **Precision**: `0.97`
+- **Recall**: `0.96`
