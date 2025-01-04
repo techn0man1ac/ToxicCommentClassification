@@ -1,4 +1,4 @@
-# Toxic Comment Classification system by "Team 16.6"
+# Toxic Comment Classification system by "Team 16.6" 🛡️
 
 ![Team 16.6 logo](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/frontend/imgs/team16_6_Logo.png)
 
@@ -6,34 +6,36 @@ In the modern world of social media, there is a significant problem of toxicity 
 
 This project aims to develop a machine learning model that can effectively classify different levels of toxicity in online comments. We use advanced technologies such as BERT to analyze text and create a system that will help moderators and users create healthier and safer social media environments.
 
-# Technologies
+# 🛠️ Technologies
 
-- [BERT](https://huggingface.co/docs/transformers/model_doc/bert): A text analysis model used to produce contextualized word embeddings.
-- [PyTorch](https://pytorch.org/): Libraries for working with deep learning.
-- [Transformers](https://huggingface.co/docs/transformers/index): A library that provides access to BERT and other advanced machine learning models.
-- [Docker](https://www.docker.com/): A platform for building, deploying, and managing containerized applications.
+- 🐍 [Python](https://www.python.org/): The application was developed in the [Python 3.11.8](https://www.python.org/downloads/release/python-3118/) programming language.
+- 🤗 [Transformers](https://huggingface.co/docs/transformers/index): A library that provides access to BERT and other advanced machine learning models.
+- 🔥 [PyTorch](https://pytorch.org/): Libraries for working with deep learning.
+- 📖 [BERT](https://en.wikipedia.org/wiki/BERT_(language_model)): A text analysis model used to produce contextualized word embeddings.
+- 🌐 [Streamlit](https://streamlit.io/): To develop the user interface, used the Streamlit package in the frontend.
+- 🐳 [Docker](https://www.docker.com/): A platform for building, deploying, and managing containerized applications.
 
-# Dataset(EDA)
+# 📊 Dataset(EDA)
 
 To train the machine learning models, we used [Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/) dataset. 
 The dataset have types of toxicity:
-- Toxic
-- Severe toxic
-- Obscene
-- Threat
-- Insult
-- Identity hate
+- Toxic 🗯️  
+- Severe Toxic 🤬  
+- Obscene 🚫  
+- Threat ☠️  
+- Insult 🗣️  
+- Identity Hate 👤💔 
 
 After [Exploratory Data Analysis](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Data_science), we found that the dataset had an `imbalance of classes`, and this had a bad impact on model training.
 
-# Data processing(data science)
+# 🖥 Data processing(data science)
 ...
 
-# Machine learning(back end)
+# ⚙️ Machine learning(back end)
 
 To solve the problem of the application, we have chosen 3 popular architectures, such as [BERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased), [ALBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert), [DistilBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert).
 
-## BERT
+## BERT ֎🇦🇮
 
 This project demonstrates toxic comment classification using the [bert-base-uncased](https://huggingface.co/google-bert/bert-base-uncased) model from the BERT family.
 
@@ -59,9 +61,9 @@ This project demonstrates toxic comment classification using the [bert-base-unca
 
 ### 5. **Performance and Key Model Details**
 - **Validation Metrics**:  
-  - Accuracy: 0.95  
-  - Precision: 0.97  
-  - Recall: 0.96  
+  - ✅ Accuracy: 0.95  
+  - ✅ Precision: 0.97  
+  - ✅ Recall: 0.96  
 
 - **Model Specifications**:  
   - Vocabulary Size: 30,522  
@@ -72,26 +74,31 @@ This project demonstrates toxic comment classification using the [bert-base-unca
   - Maximum Sequence Length: 512  
   - Pre-trained Tasks: Masked Language Modeling (MLM) and Next Sentence Prediction (NSP).  
 
-## ALBERT
+## ALBERT ֎🇦🇮
 ...
 
-## DistilBERT
+## DistilBERT ֎🇦🇮
 ...
 
-# How to install
+# 💻 How to install
 ...
 
-# How to use(front end)
+# 🚀 How to use(front end)
 ...
 
-# Mission 
+# 🎯 Mission 
 
 The mission of our project is to create a reliable and accurate machine learning model that can effectively classify different levels of toxicity in online comments. We plan to use advanced technologies such as BERT (Bidirectional Encoder Representations from Transformers) to analyze text and create a system that will help moderators and users create healthier and safer social media environments.
 
-# Vision
+# 🌟 Vision
 
 Our vision is to make online communication safe and comfortable for everyone. We want to build a system that not only can detect toxic comments, but also helps to understand the context and tries to reduce the number of such messages. We want to create a tool that will be used not only by moderators, but also by every user to provide a safe environment for the exchange of thoughts and ideas.
 
-# Licence
+# 📜 Licence
 
 This project is a group work published under the [MIT license](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/LICENSE) , and all project contributors are listed in the license text.
+
+# 👏 Acknowledgments
+
+🎓 This project was developed by a team of professionals as a graduation thesis of the [GoIT Data Science](https://goit.global/ua/courses/python-ds/) course.
+🎉 **Thank you for exploring our project! Together, we can make online spaces healthier and more respectful.**
