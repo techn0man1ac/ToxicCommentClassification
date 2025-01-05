@@ -27,8 +27,6 @@ The dataset have types of toxicity:
 - Insult 🗣️  
 - Identity Hate 👤💔 
 
-After [Exploratory Data Analysis](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Data_science), 
-
 # 🖥 Data Science
 
 The primary datasets (`train.csv`, `test.csv`, and `sample_submission.csv`) are loaded into [Pandas](https://pandas.pydata.org/) `DataFrames`. 
