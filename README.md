@@ -34,7 +34,7 @@ After that make [Exploratory Data Analysis](https://github.com/techn0man1ac/Toxi
 
 As you can seen from the data analysis, there is an `imbalance of classes` in the ratio of 1 to 10 (toxic/non-toxic). 
 
-![Data toxic distribution ](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/blob/main//IMGs/dataToxicDistribution.png)
+![Data toxic distribution ](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/dataToxicDistribution.png)
 
 Distribution of classes:
 
