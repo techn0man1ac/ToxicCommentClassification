@@ -48,11 +48,11 @@ As you can seen from the data analysis, there is an `imbalance of classes` in th
 
 Here is a visualization of the data from the dataset research. Dataset in bargraph representation:
 
-![Dataset in bar graph format](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/MainPreparations/IMGs/dataSetGraphic0.png)
+![Dataset in bar graph format](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/IMGs/dataSetGraphic0.png)
 
 Dataset in pie representation:
 
-![Dataset in pie format](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/MainPreparations/IMGs/dataSetGraphic1.png)
+![Dataset in pie format](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/IMGs/dataSetGraphic1.png)
 
 Graphs show basic information about the dataset to understand the size and types of columns. Such a ratio in the data will have a very negative impact on the model's prediction accuracy.
 
