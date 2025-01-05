@@ -68,7 +68,7 @@ Graphs show basic information about the dataset to understand the size and types
 | identity_hate  | 13816  | 20.35%     |
 | Non-toxic      | 16225  | 23.90%     |
 
-The [balance of classes has been adjusted](https://github.com/techn0man1ac/ToxicCommentClassification/blob/MainPreparations/Data_science/preprocessing_data/preprocessing_data.ipynb), and the balance of non-toxic categories has been changed for each class, and now the balance is 50/50 for each category. After that make cleaning process ensures compatibility with machine learning models such as BERT.
+The [balance of classes has been adjusted](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Data_science/preprocessing_data/preprocessing_data.ipynb), and the balance of non-toxic categories has been changed for each class, and now the balance is 50/50 for each category. After that make cleaning process ensures compatibility with machine learning models such as BERT.
 
 # ⚙️ Machine learning(Back End)
 
