@@ -30,7 +30,7 @@ The dataset have types of toxicity:
 # 🖥 Data Science
 
 The primary datasets (`train.csv`, `test.csv`, and `sample_submission.csv`) are loaded into [Pandas](https://pandas.pydata.org/) `DataFrames`. 
-After that make [Exploratory Data Analysis](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Data_science) of dataframes and obtained the following results:
+After that make [Exploratory Data Analysis](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Data_science/data_science.ipynb) of dataframes and obtained the following results:
 
 Distribution of classes:
 
