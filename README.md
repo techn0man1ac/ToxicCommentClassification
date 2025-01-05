@@ -32,19 +32,22 @@ The dataset have types of toxicity:
 The primary datasets (`train.csv`, `test.csv`, and `sample_submission.csv`) are loaded into [Pandas](https://pandas.pydata.org/) `DataFrames`. 
 After that make [Exploratory Data Analysis](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Data_science/data_science.ipynb) of dataframes and obtained the following results:
 
+As you can seen from the data analysis, there is an `imbalance of classes` in the ratio of 1 to 10 (toxic/non-toxic). 
+
+![Data toxic distribution ](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/blob/main//IMGs/dataToxicDistribution.png)
+
 Distribution of classes:
 
-| Class          | Count  | Percentage |
-|----------------|--------|------------|
-| toxic          | 15,294 | 9.58%      |
-| severe_toxic   | 1,595  | 1.00%      |
-| obscene        | 8,449  | 5.29%      |
-| threat         | 478    | 0.30%      |
-| insult         | 7,877  | 4.94%      |
-| identity_hate  | 1,405  | 0.88%      |
-| **Non-toxic**      | **143,346**| **89.83%**     |
-
-As you can seen from the data analysis, there is an `imbalance of classes` in the ratio of 1 to 10 (toxic/non-toxic). 
+| Class          | Count   | Percentage |
+|----------------|---------|------------|
+| toxic          | 15294   | 8.57%      |
+| severe_toxic   | 1595    | 0.89%      |
+| obscene        | 8449    | 4.73%      |
+| threat         | 478     | 0.27%      |
+| insult         | 7877    | 4.41%      |
+| identity_hate  | 1405    | 0.79%      |
+| **Non-toxic**     | **143346**  | **80.33%**     |
+| Total comments | 178444 |      |
 
 Here is a visualization of the data from the dataset research. Dataset in bargraph representation:
 
