@@ -8,12 +8,13 @@ This project aims to develop a machine learning model that can effectively class
 
 # 🛠️ Technologies
 
-- 🐍 [Python](https://www.python.org/): The application was developed in the [Python 3.11.8](https://www.python.org/downloads/release/python-3118/) programming language.
-- 🤗 [Transformers](https://huggingface.co/docs/transformers/index): A library that provides access to BERT and other advanced machine learning models.
-- 🔥 [PyTorch](https://pytorch.org/): Libraries for working with deep learning.
-- 📖 [BERT](https://en.wikipedia.org/wiki/BERT_(language_model)): A text analysis model used to produce contextualized word embeddings.
-- 🌐 [Streamlit](https://streamlit.io/): To develop the user interface, used the Streamlit package in the frontend.
-- 🐳 [Docker](https://www.docker.com/): A platform for building, deploying, and managing containerized applications.
+- 🐍 [Python](https://www.python.org/): The application was developed in the [Python 3.11.8](https://www.python.org/downloads/release/python-3118/) programming language
+- 🤗 [Transformers](https://huggingface.co/docs/transformers/index): A library that provides access to BERT and other advanced machine learning models
+- 🔥 [PyTorch](https://pytorch.org/): Libraries for working with deep learning
+- 📖 [BERT](https://en.wikipedia.org/wiki/BERT_(language_model)): A text analysis model used to produce contextualized word embeddings
+- ☁️ [Kaggle](https://www.kaggle.com/): To save time, we used cloud computing to train the models
+- 🌐 [Streamlit](https://streamlit.io/): To develop the user interface, used the Streamlit package in the frontend
+- 🐳 [Docker](https://www.docker.com/): A platform for building, deploying, and managing containerized applications
 
 # 📊 Dataset(EDA)
 
@@ -26,12 +27,50 @@ The dataset have types of toxicity:
 - Insult 🗣️  
 - Identity Hate 👤💔 
 
-After [Exploratory Data Analysis](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Data_science), we found that the dataset had an `imbalance of classes`, and this had a bad impact on model training.
+# 🖥 Data Science
 
-# 🖥 Data processing(data science)
-...
+The primary datasets (`train.csv`, `test.csv`, and `sample_submission.csv`) are loaded into [Pandas](https://pandas.pydata.org/) `DataFrames`. 
+After that make [Exploratory Data Analysis](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Data_science) of dataframes and obtained the following results:
 
-# ⚙️ Machine learning(back end)
+Distribution of classes:
+
+| Class          | Count  | Percentage |
+|----------------|--------|------------|
+| toxic          | 15,294 | 9.58%      |
+| severe_toxic   | 1,595  | 1.00%      |
+| obscene        | 8,449  | 5.29%      |
+| threat         | 478    | 0.30%      |
+| insult         | 7,877  | 4.94%      |
+| identity_hate  | 1,405  | 0.88%      |
+| **Non-toxic**      | **143,346**| **89.83%**     |
+
+As you can seen from the data analysis, there is an `imbalance of classes` in the ratio of 1 to 10 (toxic/non-toxic). 
+
+Here is a visualization of the data from the dataset research. Dataset in bargraph representation:
+
+![Dataset in bar graph format](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/MainPreparations/IMGs/dataSetGraphic0.png)
+
+Dataset in pie representation:
+
+![Dataset in pie format](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/MainPreparations/IMGs/dataSetGraphic1.png)
+
+Graphs show basic information about the dataset to understand the size and types of columns. Such a ratio in the data will have a very negative impact on the model's prediction accuracy.
+
+# 📅 Data processing
+
+| Class          | Count  | Percentage |
+|----------------|--------|------------|
+| toxic          | 15294  | 22.53%     |
+| severe_toxic   | 15500  | 22.84%     |
+| obscene        | 15654  | 23.06%     |
+| threat         | 12732  | 18.76%     |
+| insult         | 15088  | 22.23%     |
+| identity_hate  | 13816  | 20.35%     |
+| Non-toxic      | 16225  | 23.90%     |
+
+The [balance of classes has been adjusted](https://github.com/techn0man1ac/ToxicCommentClassification/blob/MainPreparations/Data_science/preprocessing_data/preprocessing_data.ipynb), and the balance of non-toxic categories has been changed for each class, and now the balance is 50/50 for each category. After that make cleaning process ensures compatibility with machine learning models such as BERT.
+
+# ⚙️ Machine learning(Back End)
 
 To solve the problem of the application, we have chosen 3 popular architectures, such as [BERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased), [ALBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert), [DistilBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert).
 
@@ -83,7 +122,7 @@ This project demonstrates toxic comment classification using the [bert-base-unca
 # 💻 How to install
 ...
 
-# 🚀 How to use(front end)
+# 🚀 How to use(Front End)
 ...
 
 # 🎯 Mission 
