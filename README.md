@@ -34,15 +34,16 @@ After that make [Exploratory Data Analysis](https://github.com/techn0man1ac/Toxi
 
 Distribution of classes:
 
-| Class          | Count  | Percentage |
-|----------------|--------|------------|
-| toxic          | 15,294 | 9.58%      |
-| severe_toxic   | 1,595  | 1.00%      |
-| obscene        | 8,449  | 5.29%      |
-| threat         | 478    | 0.30%      |
-| insult         | 7,877  | 4.94%      |
-| identity_hate  | 1,405  | 0.88%      |
-| **Non-toxic**      | **143,346**| **89.83%**     |
+| Class          | Count   | Percentage |
+|----------------|---------|------------|
+| toxic          | 15294   | 8.57%      |
+| severe_toxic   | 1595    | 0.89%      |
+| obscene        | 8449    | 4.73%      |
+| threat         | 478     | 0.27%      |
+| insult         | 7877    | 4.41%      |
+| identity_hate  | 1405    | 0.79%      |
+| **Non-toxic**     | **143346**  | **80.33%**     |
+| Total comments | 178444 |      |
 
 As you can seen from the data analysis, there is an `imbalance of classes` in the ratio of 1 to 10 (toxic/non-toxic). 
 
