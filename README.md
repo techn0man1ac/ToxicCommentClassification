@@ -2,9 +2,14 @@
 
 ![Team 16.6 logo](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/frontend/imgs/team16_6_Logo.png)
 
-In the modern world of social media, there is a significant problem of toxicity in online comments, which creates a negative environment for communication. From abuse to insults, this can lead to a cessation of the exchange of thoughts and ideas among users. This project aims to develop a model capable of identifying and classifying different levels of toxicity in comments, using the power of BERT(Bidirectional Encoder Representations from Transformers for text analysis.
+In the modern era of social media, toxicity in online comments poses a significant challenge, creating a negative atmosphere for communication. From abuse to insults, toxic behavior discourages the free exchange of thoughts and ideas among users.
 
-This project aims to develop a machine learning model that can effectively classify different levels of toxicity in online comments. We use advanced technologies such as BERT to analyze text and create a system that will help moderators and users create healthier and safer social media environments.
+This project seeks to address this issue by developing a machine learning model to identify and classify varying levels of toxicity in comments. Leveraging the power of BERT (Bidirectional Encoder Representations from Transformers), this system aims to:
+
+- Analyze text for signs of toxicity
+- Classify toxicity levels effectively
+- Support moderators and users in fostering healthier and safer online communities
+- By implementing this technology, the project strives to make social media a more inclusive and positive space for interaction.
 
 # 🛠️ Technologies
 
@@ -20,12 +25,12 @@ This project aims to develop a machine learning model that can effectively class
 
 To train the machine learning models, we used [Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/) dataset. 
 The dataset have types of toxicity:
-- Toxic 🗯️  
-- Severe Toxic 🤬  
-- Obscene 🚫  
-- Threat ☠️  
-- Insult 🗣️  
-- Identity Hate 👤💔 
+- Toxic 
+- Severe Toxic 
+- Obscene
+- Threat
+- Insult
+- Identity Hate
 
 # 🖥 Data Science
 
@@ -38,16 +43,18 @@ As you can seen from the data analysis, there is an `imbalance of classes` in th
 
 Distribution of classes:
 
-| Class          | Count   | Percentage |
-|----------------|---------|------------|
-| toxic          | 15294   | 8.57%      |
-| severe_toxic   | 1595    | 0.89%      |
-| obscene        | 8449    | 4.73%      |
-| threat         | 478     | 0.27%      |
-| insult         | 7877    | 4.41%      |
-| identity_hate  | 1405    | 0.79%      |
-| **Non-toxic**     | **143346**  | **80.33%**     |
-| Total comments | 178444 |      |
+| Class          | Count       | Percentage      |
+|----------------|-------------|-----------------|
+| Toxic          | 15,294      | 9.58%           |
+| Severe Toxic   | 1,595       | 1.00%           |
+| Obscene        | 8,449       | 5.29%           |
+| Threat         | 478         | 0.30%           |
+| Insult         | 7,877       | 4.94%           |
+| Identity Hate  | 1,405       | 0.88%           |
+| Non-toxic      | **143,346** | **89.83%**      |
+| Total comments | 178444      |                 |
+
+As you can see, this table shows that there is multiclassing in the data, the data of one category can belong to another category.
 
 Here is a visualization of the data from the dataset research. Dataset in bargraph representation:
 
@@ -103,9 +110,9 @@ This project demonstrates toxic comment classification using the [bert-base-unca
 
 ### 5. **Performance and Key Model Details**
 - **Validation Metrics**:  
-  - ✅ Accuracy: 0.95  
-  - ✅ Precision: 0.97  
-  - ✅ Recall: 0.96  
+  - Accuracy: 0.95 ✅
+  - Precision: 0.97 ✅
+  - Recall: 0.96 ✅  
 
 - **Model Specifications**:  
   - Vocabulary Size: 30,522  
@@ -113,16 +120,60 @@ This project demonstrates toxic comment classification using the [bert-base-unca
   - Attention Heads: 12  
   - Hidden Layers: 12  
   - Total Parameters: 110M  
-  - Maximum Sequence Length: 512  
+  - Maximum Sequence Length: 512(in this case use 128 tokens)
   - Pre-trained Tasks: Masked Language Modeling (MLM) and Next Sentence Prediction (NSP).  
 
 ## ALBERT ֎🇦🇮
 ...
 
 ## DistilBERT ֎🇦🇮
-...
+ 
+This project demonstrates toxic comment classification using the [DistilBertForSequenceClassification](https://huggingface.co/docs/transformers/model_doc/distilbert) model, a lightweight and efficient version of BERT.
+
+### 1. Using PyTorch  
+- Selected for its flexibility, ease of use, and strong community support.  
+- Seamlessly integrated with Hugging Face Transformers.  
+
+### 2. Dataset Balancing  
+- Addressed dataset imbalance (90% non-toxic, 10% toxic) using `sklearn.utils.resample`.  
+- Applied stratified splitting for training and test datasets.  
+- Oversampled rare toxic classes, improving model recognition of all categories.  
+
+### 3. Key Techniques  
+- **Tokenization**: Preprocessed data with `DistilBertTokenizer`.  
+- **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`).  
+- **Hyperparameter Tuning**: Optimized batch size (`16`), learning rate (`2e-5`), and epochs (`3`) with Optuna.  
+
+### 4. Accelerated Training  
+- Utilized GPU for training, achieving a ~30x speedup over CPU.
+
+### 5. Threshold Optimization  
+- Used `itertools.product` to determine optimal thresholds for each class.  
+- Improved recall and F1-score for multi-label classification. 
+
+### 6. **Performance and Key Model Details** 
+- **Validation Metrics**:   
+  - Accuracy: 0.92 ✅
+  - Precision: 0.79 ✅
+  - Recall: 0.78 ✅
+
+- **Model Specifications**:  
+  - Vocabulary Size: 30522  
+  - Hidden Size: 768 
+  - Attention Heads: 12 
+  - Hidden Layers: 6  
+  - Total Parameters: 66M  
+  - Maximum Sequence Length: 512(in this case use 128 tokens)
+  - Pre-trained Tasks: Masked Language Modeling (MLM).  
 
 # 💻 How to install
+
+There are two ways to install the application on your computer:
+
+## Simple 😎
+...
+
+## Like are pro 💪
 ...
 
 # 🚀 How to use(Front End)
@@ -142,6 +193,6 @@ This project is a group work published under the [MIT license](https://github.co
 
 # 👏 Acknowledgments
 
-🎓 This project was developed by a team of professionals as a graduation thesis of the [Python Data Science and Machine Learning](https://goit.global/ua/courses/python-ds/) course 🎯 .
+This project was developed by a team of professionals as a graduation thesis of the [GoIT](https://goit.global/) **Python Data Science and Machine Learning** course.
 
-🎉 **Thank you for exploring our project! Together, we can make online spaces healthier and more respectful.**
+Thank you for exploring our project! Together, we can make online spaces healthier and more respectful.
