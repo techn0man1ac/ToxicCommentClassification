@@ -21,7 +21,11 @@ This project seeks to address this issue by developing a machine learning model 
 - 🌐 [Streamlit](https://streamlit.io/): To develop the user interface, used the Streamlit package in the frontend
 - 🐳 [Docker](https://www.docker.com/): A platform for building, deploying, and managing containerized applications
 
-# 📊 Dataset(EDA)
+# 🖥 Data Science
+
+Work was performed on dataset research and data processing to train machine learning models. 
+
+## 📊 Dataset(EDA)
 
 To train the machine learning models, we used [Toxic Comment Classification Challenge](https://www.kaggle.com/c/jigsaw-toxic-comment-classification-challenge/) dataset. 
 The dataset have types of toxicity:
@@ -32,14 +36,12 @@ The dataset have types of toxicity:
 - Insult
 - Identity Hate
 
-# 🖥 Data Science
-
 The primary datasets (`train.csv`, `test.csv`, and `sample_submission.csv`) are loaded into [Pandas](https://pandas.pydata.org/) `DataFrames`. 
 After that make [Exploratory Data Analysis](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Data_science/data_science.ipynb) of dataframes and obtained the following results:
 
-As you can seen from the data analysis, there is an `imbalance of classes` in the ratio of 1 to 10 (toxic/non-toxic). 
-
 ![Data toxic distribution ](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/dataToxicDistribution.png)
+
+As you can seen from the data analysis, there is an `imbalance of classes` in the ratio of 1 to 10 (toxic/non-toxic). 
 
 Distribution of classes:
 
@@ -66,7 +68,7 @@ Dataset in pie representation:
 
 Graphs show basic information about the dataset to understand the size and types of columns. Such a ratio in the data will have a very negative impact on the model's prediction accuracy.
 
-# 📅 Data processing
+## 📅 Data processing
 
 | Class          | Count  | Percentage |
 |----------------|--------|------------|
@@ -78,7 +80,8 @@ Graphs show basic information about the dataset to understand the size and types
 | identity_hate  | 13816  | 20.35%     |
 | Non-toxic      | 16225  | 23.90%     |
 
-The [balance of classes has been adjusted](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Data_science/preprocessing_data/preprocessing_data.ipynb), and the balance of non-toxic categories has been changed for each class, and now the balance is 50/50 for each category. After that make cleaning process ensures compatibility with machine learning models such as BERT.
+[Correction](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Data_science/preprocessing_data/preprocessing_data.ipynb) of general amount of toxic and non-toxic classes to reach 50% / 50% balance between them in comparison to the original data where general amount of all toxic classes has a share of 10% in comparison to non-toxic, which had 90% of the share of the original data set.
+These all steps would ensure toxic category in general as well as each toxic class receives equal model attention during learning process.
 
 # ⚙️ Machine learning(Back End)
 
@@ -171,12 +174,20 @@ This project demonstrates toxic comment classification using the [DistilBertForS
 There are two ways to install the application on your computer:
 
 ## Simple 😎
+
 ...
 
 ## Like are pro 💪
+
 ...
 
 # 🚀 How to use(Front End)
+
+...
+
+# 🤝 Team
+
+The project was divided into tasks and assigned to the following roles:
 ...
 
 # 🎯 Mission 
