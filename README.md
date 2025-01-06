@@ -175,11 +175,45 @@ There are two ways to install the application on your computer:
 
 ## Simple 😎
 
-...
+Download [Docker](https://www.docker.com/) -> Log in to your profile -> Open the Docker terminal(at the bottom of the program) -> Write the command:
+
+```
+docker pull techn0man1ac/toxiccommentclassificationsystem:latest
+```
+
+After that, all the necessary files will be downloaded from [DockerHub](https://hub.docker.com/repository/docker/techn0man1ac/toxiccommentclassificationsystem) -> Go to the `Images` tab -> Launch the image by clicking `Run` -> Click `Optional settings` -> Set the host port `8501`
+
+![Set host port 8501](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/dockerRun.png)
+
+Open http://localhost:8501 in your browser.
 
 ## Like are pro 💪
 
-...
+This way need from you, to have some skills with command line, GitHub and Docker.
+
+1. Cloning a repository:
+
+```
+git clone https://github.com/techn0man1ac/ToxicCommentClassification.git
+```
+
+2. Download the [model files from this link](https://drive.google.com/drive/folders/17kR8llTZ1yNig5xFjrnpLCKyRfQkIwz2?usp=sharing), after downloading the `albert`, `bert` and `distilbert` directories, put them in the `frontend\saved_models` directory, like that:
+
+![Catalog with models](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/modelsCatalogExample.png)
+
+3. Open a command line/terminal and navigate to the `ToxicCommentClassification` directory, and pack the container with the command:
+
+```
+docker-compose up
+```
+
+4. After which the application will immediately start and a browser window will open with the address http://localhost:8501
+
+To turn off the application, run the command:
+
+```
+docker-compose down
+```
 
 # 🚀 How to use(Front End)
 
