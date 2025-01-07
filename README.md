@@ -114,9 +114,9 @@ These all steps would ensure toxic category in general as well as each toxic cla
 
 # ⚙️ Machine learning(Back End)
 
-To solve the challenge, we have chosen 3 popular architectures, such as [BERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased), [ALBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert), [DistilBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert). 
-
 We used to Cloud computing on [Kaggle](https://www.kaggle.com/code/techn0man1ac/toxiccommentclassificationsystem/) for are speed up model training.
+
+To solve the challenge, we have chosen 3 popular architectures, such as [BERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased), [ALBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert), [DistilBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert) (each link takes you to the source code as trained by the model). 
 
 ## BERT ֎🇦🇮
 
@@ -156,14 +156,10 @@ This project demonstrates toxic comment classification using the [bert-base-unca
   - Total Parameters: 110M  
   - Maximum Sequence Length: 512(in this case use 128 tokens)
   - Pre-trained Tasks: Masked Language Modeling (MLM) and Next Sentence Prediction (NSP).
-    
-The [source code](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased) of the model training process.
 
 ## ALBERT ֎🇦🇮
 
 ...
-
-The [source code](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert) of the model training process.
 
 ## DistilBERT ֎🇦🇮
  
@@ -205,8 +201,6 @@ This project demonstrates toxic comment classification using the [DistilBertForS
   - Maximum Sequence Length: 512(in this case use 128 tokens)
   - Pre-trained Tasks: Masked Language Modeling (MLM).
   
-The [source code](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert) of the model training process.
-
 # 💻 How to install
 
 There are two ways to install the application on your computer:
