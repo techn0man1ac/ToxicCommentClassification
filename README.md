@@ -290,7 +290,9 @@ docker-compose down
 
 After launching the application, you will see the project's home tab with a description of the application and the technologies used in it. The program looks like this when running:
 
-![Models test - That f@@ing awesome](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/appClassify.png)
+![Models test](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/appTests.png)
+
+The application interface is intuitive and user-friendly. The application is also able to classify text files in the txt format.
 
 The structure of the tabs is as follows:
 - `Home` - Here you can find a description of the app, the technologies used for its operation, the mission and vision of the project, and acknowledgments
@@ -298,9 +300,7 @@ The structure of the tabs is as follows:
 - `Metrics` - In this tab, you can choose one of 3 models, after selecting it, the technical characteristics of each of the machine learning models are loaded
 - `Classification` - A tab where you can test the work of models.
 
-![Models test](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/appTests.png)
-
-The application interface is intuitive and user-friendly. The application is also able to classify text files in the txt format.
+![Models test - That f@@ing awesome](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/appClassify.png)
 
 The main elements of the interface:
 - `Choose your model` - A drop-down list where you can select one of 3 pre-trained machine learning models
@@ -309,6 +309,8 @@ The main elements of the interface:
 - `Display detailed toxicity` - A checkbox that displays a detailed classification by class if the model considers the text to be toxic
 
 ![Classify tab interface](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/classifyInterface.png)
+
+The application interface is intuitive and user-friendly. The application is also able to classify text files in the txt format.
 
 The [app written](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/frontend) with the help of streamlit provides a user-friendly interface to observe and try out functionality of the included BERT-based models for comment toxicity classification.
 
