@@ -73,17 +73,17 @@ As you can seen from the data analysis, there is an `imbalance of classes` in th
 
 Distribution of classes:
 
-| Class          | Count       | Percentage      |
-|----------------|-------------|-----------------|
-| Toxic          | 15,294      | 9.58%           |
-| Severe Toxic   | 1,595       | 1.00%           |
-| Obscene        | 8,449       | 5.29%           |
-| Threat         | 478         | 0.30%           |
-| Insult         | 7,877       | 4.94%           |
-| Identity Hate  | 1,405       | 0.88%           |
-| Non-toxic      | **143,346** | **89.83%**      |
-| Total comments |   159571    |                 |
-| Multiclass comments |   18,873    |                 |
+| Class                                   | Count       | Percentage      |
+|-----------------------------------------|-------------|-----------------|
+| Toxic                                   | 15,294      | 9.58%           |
+| Severe Toxic                            | 1,595       | 1.00%           |
+| Obscene                                 | 8,449       | 5.29%           |
+| Threat                                  | 478         | 0.30%           |
+| Insult                                  | 7,877       | 4.94%           |
+| Identity Hate                           | 1,405       | 0.88%           |
+| Non-toxic                               | **143,346** | **89.83%**      |
+| Total comments                          |   159,571   |                 |
+| Multiclass comments vs Total comments   |   18,873    | 11.8%           |
 
 As you can see, this table shows that there is multiclassing in the data, the data of one category can belong to another category.
 
@@ -99,26 +99,28 @@ Graphs show basic information about the dataset to understand the size and types
 
 Because the original dataset includes data imbalances, this will have a bad impact on the accuracy of machine learning models, so we applied oversampling using the [Sklearn](https://scikit-learn.org/) package(`resample` function) - copying data while maintaining the balance of classes to increase the importance in the context of models recognition of a particular class.
 
-| Class          | Original dataset | Data processing |
-|----------------|-------------|------------------|
-| Toxic          | 15,294      | 40,216           |
-| Severe Toxic   | 1,595       | 16,889           |
-| Obscene        | 8,449       | 38,009           |
-| Threat         | 478         | 16,829           |
-| Insult         | 7,877       | 36,080           |
-| Identity Hate  | 1,405       | 19,744           |
-| None toxic     | 143,346     | 143,346          |
-| Total          | 178,444     | 269,396          |
+| Class          | Original dataset | Data processing | Persentage about original |
+|----------------|------------------|-----------------|---------------------------|
+| Toxic          | 15,294           | 40,216          | +262%                     |
+| Severe Toxic   | 1,595            | 16,889          | +1058%                    |
+| Obscene        | 8,449            | 38,009          | +449%                     |
+| Threat         | 478              | 16,829          | +3520%                    |
+| Insult         | 7,877            | 36,080          | +458%                     |
+| Identity Hate  | 1,405            | 19,744          | +1405%                    |
+| None toxic     | 143,346          | 143,346         | 0%                        |
+| Total          | 178,444          | 269,396         | +51%                      |
 
 As a result, after processing the data, the balance of toxic and non-toxic for each class was ~50/50%. Thanks to this [data processing](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Backend/Models/Model_0_bert-base-uncased/FOR_PROJECT_BERT_oversampling_with_optuna_correct_oversampling.ipynb), the accuracy of pattern recognition has increased by several percent.
 
 # ⚙️ Machine learning(Back End)
 
-To solve the challenge, we have chosen 3 popular architectures, such as [BERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased), [ALBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert), [DistilBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert) (each link takes you to the source code as trained by the model). 
+To solve the challenge, we have chosen 3 popular architectures, such as [BERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased), [DistilBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert), [ALBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert), each link takes you to the source code as trained by the model. 
 
 Here is a visual representation of the main parameters of the models:
 
 ![Model metrics comparison](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/modelMetricsComparison.png)
+
+Here is a detailed description of each of the machine learning models we trained:
 
 ## BERT ֎🇦🇮
 
@@ -158,6 +160,46 @@ This project demonstrates toxic comment classification using the [bert-base-unca
   - Total Parameters: 110M  
   - Maximum Sequence Length: 512(in this case use 128 tokens)
   - Pre-trained Tasks: Masked Language Modeling (MLM) and Next Sentence Prediction (NSP).
+
+## DistilBERT ֎🇦🇮
+ 
+This project demonstrates toxic comment classification using the [distilbert-base-uncased](https://huggingface.co/distilbert/distilbert-base-uncased) model, a lightweight and efficient version of BERT.
+
+### 1. Using PyTorch  
+- Selected for its flexibility, ease of use, and strong community support.  
+- Seamlessly integrated with Hugging Face Transformers.  
+
+### 2. Dataset Balancing  
+- Addressed dataset imbalance (90% non-toxic, 10% toxic) using `sklearn.utils.resample`.  
+- Applied stratified splitting for training and test datasets.  
+- Oversampled rare toxic classes, improving model recognition of all categories.  
+
+### 3. Key Techniques  
+- **Tokenization**: Preprocessed data with `DistilBertTokenizer`.  
+- **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`).  
+- **Hyperparameter Tuning**: Optimized batch size (`16`), learning rate (`2e-5`), and epochs (`3`) with Optuna.  
+
+### 4. Accelerated Training  
+- Utilized GPU for training, achieving a ~30x speedup over CPU.
+
+### 5. Threshold Optimization  
+- Used `itertools.product` to determine optimal thresholds for each class.  
+- Improved recall and F1-score for multi-label classification. 
+
+### 6. **Performance and Key Model Details** 
+- **Validation Metrics**:   
+  - Accuracy: 0.92 ✅
+  - Precision: 0.79 ✅
+  - Recall: 0.78 ✅
+
+- **Model Specifications**:  
+  - Vocabulary Size: 30522  
+  - Hidden Size: 768 
+  - Attention Heads: 12 
+  - Hidden Layers: 6  
+  - Total Parameters: 66M  
+  - Maximum Sequence Length: 512(in this case use 128 tokens)
+  - Pre-trained Tasks: Masked Language Modeling (MLM).
 
 ## ALBERT ֎🇦🇮
 
@@ -199,46 +241,6 @@ This project demonstrates toxic comment classification using the [albert-base-v2
   - Total Parameters: 11M  
   - Maximum Sequence Length: 512(in this case use 128 tokens)
   - Pre-trained Tasks: Masked Language Modeling (MLM).  
-
-## DistilBERT ֎🇦🇮
- 
-This project demonstrates toxic comment classification using the [distilbert-base-uncased](https://huggingface.co/distilbert/distilbert-base-uncased) model, a lightweight and efficient version of BERT.
-
-### 1. Using PyTorch  
-- Selected for its flexibility, ease of use, and strong community support.  
-- Seamlessly integrated with Hugging Face Transformers.  
-
-### 2. Dataset Balancing  
-- Addressed dataset imbalance (90% non-toxic, 10% toxic) using `sklearn.utils.resample`.  
-- Applied stratified splitting for training and test datasets.  
-- Oversampled rare toxic classes, improving model recognition of all categories.  
-
-### 3. Key Techniques  
-- **Tokenization**: Preprocessed data with `DistilBertTokenizer`.  
-- **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`).  
-- **Hyperparameter Tuning**: Optimized batch size (`16`), learning rate (`2e-5`), and epochs (`3`) with Optuna.  
-
-### 4. Accelerated Training  
-- Utilized GPU for training, achieving a ~30x speedup over CPU.
-
-### 5. Threshold Optimization  
-- Used `itertools.product` to determine optimal thresholds for each class.  
-- Improved recall and F1-score for multi-label classification. 
-
-### 6. **Performance and Key Model Details** 
-- **Validation Metrics**:   
-  - Accuracy: 0.92 ✅
-  - Precision: 0.79 ✅
-  - Recall: 0.78 ✅
-
-- **Model Specifications**:  
-  - Vocabulary Size: 30522  
-  - Hidden Size: 768 
-  - Attention Heads: 12 
-  - Hidden Layers: 6  
-  - Total Parameters: 66M  
-  - Maximum Sequence Length: 512(in this case use 128 tokens)
-  - Pre-trained Tasks: Masked Language Modeling (MLM).
 
 We used to Cloud computing on [Kaggle](https://www.kaggle.com/code/techn0man1ac/toxiccommentclassificationsystem/) for are speed up model training.
 
