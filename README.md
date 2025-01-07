@@ -157,11 +157,48 @@ This project demonstrates toxic comment classification using the [bert-base-unca
 
 ## ALBERT ֎🇦🇮
 
-...
+This project demonstrates toxic comment classification using the [albert-base-v2](https://huggingface.co/albert/albert-base-v2) model, a lightweight and efficient version of BERT designed to reduce parameters while maintaining high performance.
+
+### 1. Using PyTorch  
+- Selected for its flexibility, ease of use, and strong community support.  
+- Seamlessly integrated with Hugging Face Transformers.  
+
+### 2. Dataset Balancing  
+- Addressed dataset imbalance (90% non-toxic, 10% toxic) using `sklearn.utils.resample`.  
+- Applied stratified splitting for training and test datasets.  
+- Oversampled rare toxic classes to improve model recognition of all categories.  
+
+### 3. Key Techniques  
+- **Tokenization**: Preprocessed data with `AlbertTokenizer`.  
+- **Loss Function**: Binary Cross-Entropy with Logits (`BCEWithLogitsLoss`).  
+- **Hyperparameter Tuning**: Optimized batch size (`8`), learning rate (`2e-5`), and epochs (`3`) using Optuna.  
+
+### 4. Accelerated Training  
+- Utilized GPU for training, achieving a ~30x speedup over CPU.  
+
+### 5. Threshold Optimization  
+- Used `itertools.product` to determine optimal thresholds for each class.  
+- Enhanced recall and F1-score for multi-label classification.  
+
+### 6. **Performance and Key Model Details**
+- **Validation Metrics**:  
+  - Accuracy: 0.92 ✅  
+  - Precision: 0.84 ✅ 
+  - Recall: 0.69 ✅ 
+
+- **Model Specifications**:   
+  - Vocabulary Size: 30000 
+  - Hidden Size: 768  
+  - Attention Heads: 12 
+  - Hidden Layers: 12 
+  - Intermediate Size: 4096  
+  - Total Parameters: 11M  
+  - Maximum Sequence Length: 512(in this case use 128 tokens)
+  - Pre-trained Tasks: Masked Language Modeling (MLM).  
 
 ## DistilBERT ֎🇦🇮
  
-This project demonstrates toxic comment classification using the [DistilBertForSequenceClassification](https://huggingface.co/docs/transformers/model_doc/distilbert) model, a lightweight and efficient version of BERT.
+This project demonstrates toxic comment classification using the [distilbert-base-uncased](https://huggingface.co/distilbert/distilbert-base-uncased) model, a lightweight and efficient version of BERT.
 
 ### 1. Using PyTorch  
 - Selected for its flexibility, ease of use, and strong community support.  
