@@ -19,9 +19,9 @@ The project was divided into tasks, which in turn were assigned to the following
 
 `Desing director` - [Polina Mamchur](https://github.com/polinamamchur)
 
-`Data science` - [Aliona Mishchenko](https://github.com/Alena-Mishchenko)
+`Data science` - [Olena Mishchenko](https://github.com/Alena-Mishchenko)
 
-`Backend` - [Ivan Shkvir](https://github.com/IvanShkvyr), [Oleksandr Kovalenko](https://github.com/AlexandrSergeevichKovalenko)
+`Backend` - [Ivan Shkvyr](https://github.com/IvanShkvyr), [Oleksandr Kovalenko](https://github.com/AlexandrSergeevichKovalenko)
 
 `Frontend` - [Oleksii Yeromenko](https://github.com/oleksii-yer)
 
@@ -116,9 +116,13 @@ As a result, after processing the data, the balance of toxic and non-toxic for e
 
 To solve the challenge, we have chosen 3 popular architectures, such as [BERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased), [ALBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert), [DistilBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert) (each link takes you to the source code as trained by the model). 
 
+Here is a visual representation of the main parameters of the models:
+
+![Model metrics comparison](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/modelMetricsComparison.png)
+
 ## BERT ֎🇦🇮
 
-This project demonstrates toxic comment classification using the [bert-base-uncased](https://huggingface.co/google-bert/bert-base-uncased) model from the BERT family.
+This project demonstrates toxic comment classification using the [bert-base-uncased](https://huggingface.co/google-bert/bert-base-uncased) model from the BERT family. To automate the process of selecting hyperparameters, hepl us [Optuna](https://optuna.org/).
 
 ### 1. **Toxic Comment Classification with BERT**
 - Utilized the `bert-base-uncased` model with PyTorch for flexibility and ease of use.  
@@ -235,8 +239,6 @@ This project demonstrates toxic comment classification using the [distilbert-bas
   - Total Parameters: 66M  
   - Maximum Sequence Length: 512(in this case use 128 tokens)
   - Pre-trained Tasks: Masked Language Modeling (MLM).
-
-To automate the process of selecting hyperparameters, hepl us [Optuna](https://optuna.org/).
 
 We used to Cloud computing on [Kaggle](https://www.kaggle.com/code/techn0man1ac/toxiccommentclassificationsystem/) for are speed up model training.
 
