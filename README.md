@@ -11,6 +11,33 @@ This project seeks to address this issue by developing a machine learning model 
 - Support moderators and users in fostering healthier and safer online communities
 - By implementing this technology, the project strives to make social media a more inclusive and positive space for interaction.
 
+# 🤝 Team
+
+`Team 16.6` means that each member has an equal contribution to the project ⚖ .
+
+The project was divided into tasks, which in turn were assigned to the `16.6 Team` in the following roles:
+
+`Desing director` - [Polina Mamchur](https://github.com/polinamamchur)
+
+`Data science` - [Aliona Mishchenko](https://github.com/Alena-Mishchenko)
+
+`Backend` - [Ivan Shkvir](https://github.com/IvanShkvyr), [Oleksandr Kovalenko](https://github.com/AlexandrSergeevichKovalenko)
+
+`Frontend` - [Oleksii Yeromenko](https://github.com/oleksii-yer)
+
+`Team Lead` - [Serhii Trush](https://github.com/techn0man1ac)
+
+`Scrum Master` - [Oleksandr Kovalenko](https://github.com/AlexandrSergeevichKovalenko)
+
+
+# 🎨 Desing
+
+The project started with design development. First, a [prototype design](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/design/Pages) was developed:
+
+![Desing prototype](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/design/Pages/Analysis%20Page.png)
+
+Creative director create a visually appealing application, as well as to ensure the presentation of the project to stakeholders. By focusing on both UI/UX and presentation design was able to bring the team's vision to life and effectively communicate the [value of the project](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/design).
+
 # 🛠️ Technologies
 
 - 🐍 [Python](https://www.python.org/): The application was developed in the [Python 3.11.8](https://www.python.org/downloads/release/python-3118/) programming language
@@ -20,6 +47,7 @@ This project seeks to address this issue by developing a machine learning model 
 - ☁️ [Kaggle](https://www.kaggle.com/): To save time, we used cloud computing to train the models
 - 🌐 [Streamlit](https://streamlit.io/): To develop the user interface, used the Streamlit package in the frontend
 - 🐳 [Docker](https://www.docker.com/): A platform for building, deploying, and managing containerized applications
+
 
 # 🖥 Data Science
 
@@ -124,10 +152,15 @@ This project demonstrates toxic comment classification using the [bert-base-unca
   - Hidden Layers: 12  
   - Total Parameters: 110M  
   - Maximum Sequence Length: 512(in this case use 128 tokens)
-  - Pre-trained Tasks: Masked Language Modeling (MLM) and Next Sentence Prediction (NSP).  
+  - Pre-trained Tasks: Masked Language Modeling (MLM) and Next Sentence Prediction (NSP).
+    
+The [source code](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased) of the model training process.
 
 ## ALBERT ֎🇦🇮
+
 ...
+
+The [source code](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert) of the model training process.
 
 ## DistilBERT ֎🇦🇮
  
@@ -167,7 +200,9 @@ This project demonstrates toxic comment classification using the [DistilBertForS
   - Hidden Layers: 6  
   - Total Parameters: 66M  
   - Maximum Sequence Length: 512(in this case use 128 tokens)
-  - Pre-trained Tasks: Masked Language Modeling (MLM).  
+  - Pre-trained Tasks: Masked Language Modeling (MLM).
+  
+The [source code](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert) of the model training process.
 
 # 💻 How to install
 
@@ -175,7 +210,7 @@ There are two ways to install the application on your computer:
 
 ## Simple 😎
 
-Download [Docker](https://www.docker.com/) -> Log in to your profile -> Open the Docker terminal(at the bottom of the program) -> Write the command:
+Download [Docker](https://www.docker.com/) -> Log in to your profile in the application -> Open the Docker terminal(bottom of the program) -> Enter command:
 
 ```
 docker pull techn0man1ac/toxiccommentclassificationsystem:latest
@@ -217,12 +252,33 @@ docker-compose down
 
 # 🚀 How to use(Front End)
 
-...
+After launching the application, you will see the project's home tab with a description of the application and the technologies used in it.
 
-# 🤝 Team
+![App home page](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/appHome.png)
 
-The project was divided into tasks and assigned to the following roles:
-...
+The structure of the tabs is as follows:
+- `Home` - Here you can find a description of the app, the technologies used for its operation, the mission and vision of the project, and acknowledgments
+- `Team` - This tab contains those without whom the app would not exist, its creators
+- `Metrics` - In this tab, you can choose one of 3 models, after selecting it, the technical characteristics of each of the machine learning models are loaded
+- `Classification` - A tab where you can test the work of models.
+
+The program looks like this when running:
+
+![Models test - That f@@ing awesome](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/appClassify.png)
+
+The application interface is intuitive and user-friendly. The application is also able to classify text files in the txt format:
+
+![Models test](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/appTests.png)
+
+The main elements of the interface:
+- `Choose your model` - A drop-down list where you can select one of 3 pre-trained machine learning models
+- `Enter your comment here` - In this field you can manually write a text to test it for toxicity and further classify it in a positive case
+- `Upload your text file` - By clicking here, a dialog box will appear with the choice of a file in `txt format` (after uploading the file, the text in the text field is ignored)
+- `Display detailed toxicity` - A checkbox that displays a detailed classification by class if the model considers the text to be toxic
+
+![Classify tab interface](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/classifyInterface.png)
+
+The [app written](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/frontend) with the help of streamlit provides a user-friendly interface to observe and try out functionality of the included BERT-based models for comment toxicity classification.
 
 # 🎯 Mission 
 
