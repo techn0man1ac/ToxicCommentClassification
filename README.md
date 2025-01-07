@@ -15,7 +15,7 @@ This project seeks to address this issue by developing a machine learning model 
 
 `Team 16.6` means that each member has an equal contribution to the project ⚖ .
 
-The project was divided into tasks, which in turn were assigned to the `16.6 Team` in the following roles:
+The project was divided into tasks, which in turn were assigned to the following roles:
 
 `Desing director` - [Polina Mamchur](https://github.com/polinamamchur)
 
@@ -32,7 +32,7 @@ The project was divided into tasks, which in turn were assigned to the `16.6 Tea
 
 # 🎨 Desing
 
-The project started with design development. First, a [prototype design](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/design/Pages) was developed:
+The project started with design development. First, design a [prototype of user interface](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/design/Pages) was developed:
 
 ![Desing prototype](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/design/Pages/Analysis%20Page.png)
 
