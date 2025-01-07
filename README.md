@@ -39,10 +39,10 @@ The project started with design development. First, design a [prototype of user 
 Creative director create a visually appealing application, as well as to ensure the presentation of the project to stakeholders. By focusing on both UI/UX and presentation design was able to bring the team's vision to life and effectively communicate the [value of the project](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/design).
 
 # 🛠️ Technologies
-
+- 🖼️ [Figma](https://www.figma.com/): Online interface development and prototyping service with the ability to organize collaborative work
 - 🐍 [Python](https://www.python.org/): The application was developed in the [Python 3.11.8](https://www.python.org/downloads/release/python-3118/) programming language
 - 🤗 [Transformers](https://huggingface.co/docs/transformers/index): A library that provides access to BERT and other advanced machine learning models
-- 🔥 [PyTorch](https://pytorch.org/): Libraries for working with deep learning
+- 🔥 [PyTorch](https://pytorch.org/): Libraries for working with deep learning and support GPU computing
 - 📖 [BERT](https://en.wikipedia.org/wiki/BERT_(language_model)): A text analysis model used to produce contextualized word embeddings
 - ☁️ [Kaggle](https://www.kaggle.com/): To save time, we used cloud computing to train the models
 - 🌐 [Streamlit](https://streamlit.io/): To develop the user interface, used the Streamlit package in the frontend
