@@ -27,7 +27,7 @@ The project was divided into tasks, which in turn were assigned to the following
 
 `Team Lead` - [Serhii Trush](https://github.com/techn0man1ac)
 
-`Scrum Master` - [Oleksandr Kovalenko](https://github.com/AlexandrSergeevichKovalenko)
+`Scrum Master` - [Oleksandr Kovalenko](https://github.com/AlexandrSergeevichKovalenko), [Polina Mamchur](https://github.com/polinamamchur)
 
 
 # 🎨 Desing
