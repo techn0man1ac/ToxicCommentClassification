@@ -110,7 +110,7 @@ Because the original dataset includes data imbalances, this will have a bad impa
 | None toxic     | 143,346     | 143,346          |
 | Total          | 178,444     | 269,396          |
 
-Thanks to this [data processing](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Backend/Models/Model_0_bert-base-uncased/FOR_PROJECT_BERT_oversampling_with_optuna_correct_oversampling.ipynb), the accuracy of pattern recognition has increased by several percent.
+As a result, after processing the data, the balance of toxic and non-toxic for each class was ~50/50%. Thanks to this [data processing](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Backend/Models/Model_0_bert-base-uncased/FOR_PROJECT_BERT_oversampling_with_optuna_correct_oversampling.ipynb), the accuracy of pattern recognition has increased by several percent.
 
 # ⚙️ Machine learning(Back End)
 
