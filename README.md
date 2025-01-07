@@ -82,7 +82,8 @@ Distribution of classes:
 | Insult         | 7,877       | 4.94%           |
 | Identity Hate  | 1,405       | 0.88%           |
 | Non-toxic      | **143,346** | **89.83%**      |
-| Total comments | 178444      |                 |
+| Total comments |   159571    |                 |
+| Multiclass comments |   18,873    |                 |
 
 As you can see, this table shows that there is multiclassing in the data, the data of one category can belong to another category.
 
