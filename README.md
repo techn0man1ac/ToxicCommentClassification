@@ -91,30 +91,28 @@ Here is a visualization of the data from the dataset research. Dataset in bargra
 
 ![Dataset in bar graph format](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/IMGs/dataSetGraphic0.png)
 
-Dataset in pie representation:
-
-![Dataset in pie format](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/IMGs/dataSetGraphic1.png)
-
 Graphs show basic information about the dataset to understand the size and types of columns. Such a ratio in the data will have a very negative impact on the model's prediction accuracy.
 
 ## 📅 Data processing
 
-| Class          | Count  | Percentage |
-|----------------|--------|------------|
-| toxic          | 15294  | 22.53%     |
-| severe_toxic   | 15500  | 22.84%     |
-| obscene        | 15654  | 23.06%     |
-| threat         | 12732  | 18.76%     |
-| insult         | 15088  | 22.23%     |
-| identity_hate  | 13816  | 20.35%     |
-| Non-toxic      | 16225  | 23.90%     |
+![Data processing visualization](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/dataProcessing.png)
 
-[Correction](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Data_science/preprocessing_data/preprocessing_data.ipynb) of general amount of toxic and non-toxic classes to reach 50% / 50% balance between them in comparison to the original data where general amount of all toxic classes has a share of 10% in comparison to non-toxic, which had 90% of the share of the original data set.
-These all steps would ensure toxic category in general as well as each toxic class receives equal model attention during learning process.
+Because the original dataset includes data imbalances, this will have a bad impact on the accuracy of machine learning models, so we applied oversampling using the [Sklearn](https://scikit-learn.org/) package(`resample` function) - copying data while maintaining the balance of classes to increase the importance in the context of models recognition of a particular class.
+
+| Class          | Original dataset | Data processing |
+|----------------|-------------|------------------|
+| Toxic          | 15,294      | 40,216           |
+| Severe Toxic   | 1,595       | 16,889           |
+| Obscene        | 8,449       | 38,009           |
+| Threat         | 478         | 16,829           |
+| Insult         | 7,877       | 36,080           |
+| Identity Hate  | 1,405       | 19,744           |
+| None toxic     | 143,346     | 143,346          |
+| Total          | 178,444     | 269,396          |
+
+Thanks to this [data processing](https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/Backend/Models/Model_0_bert-base-uncased/FOR_PROJECT_BERT_oversampling_with_optuna_correct_oversampling.ipynb), the accuracy of pattern recognition has increased by several percent.
 
 # ⚙️ Machine learning(Back End)
-
-We used to Cloud computing on [Kaggle](https://www.kaggle.com/code/techn0man1ac/toxiccommentclassificationsystem/) for are speed up model training.
 
 To solve the challenge, we have chosen 3 popular architectures, such as [BERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_0_bert-base-uncased), [ALBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_1_albert), [DistilBERT](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/Backend/Models/Model_2_distilbert) (each link takes you to the source code as trained by the model). 
 
@@ -200,7 +198,11 @@ This project demonstrates toxic comment classification using the [DistilBertForS
   - Total Parameters: 66M  
   - Maximum Sequence Length: 512(in this case use 128 tokens)
   - Pre-trained Tasks: Masked Language Modeling (MLM).
-  
+
+To automate the process of selecting hyperparameters, hepl us [Optuna](https://optuna.org/).
+
+We used to Cloud computing on [Kaggle](https://www.kaggle.com/code/techn0man1ac/toxiccommentclassificationsystem/) for are speed up model training.
+
 # 💻 How to install
 
 There are two ways to install the application on your computer:
