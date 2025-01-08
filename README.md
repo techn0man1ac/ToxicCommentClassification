@@ -122,7 +122,7 @@ Here is a visual representation of the main parameters of the models:
 
 Here is a detailed description of each of the machine learning models we trained:
 
-## BERT ֎🇦🇮
+## BERT ֎
 
 This project demonstrates toxic comment classification using the [bert-base-uncased](https://huggingface.co/google-bert/bert-base-uncased) model from the BERT family. To automate the process of selecting hyperparameters, hepl us [Optuna](https://optuna.org/).
 
@@ -161,7 +161,7 @@ This project demonstrates toxic comment classification using the [bert-base-unca
   - Maximum Sequence Length: 512(in this case use 128 tokens)
   - Pre-trained Tasks: Masked Language Modeling (MLM) and Next Sentence Prediction (NSP).
 
-## DistilBERT ֎🇦🇮
+## DistilBERT ֎
  
 This project demonstrates toxic comment classification using the [distilbert-base-uncased](https://huggingface.co/distilbert/distilbert-base-uncased) model, a lightweight and efficient version of BERT.
 
@@ -201,7 +201,7 @@ This project demonstrates toxic comment classification using the [distilbert-bas
   - Maximum Sequence Length: 512(in this case use 128 tokens)
   - Pre-trained Tasks: Masked Language Modeling (MLM).
 
-## ALBERT ֎🇦🇮
+## ALBERT ֎
 
 This project demonstrates toxic comment classification using the [albert-base-v2](https://huggingface.co/albert/albert-base-v2) model, a lightweight and efficient version of BERT designed to reduce parameters while maintaining high performance.
 
