@@ -12,8 +12,15 @@ def metrics_page():
     model_choice_metric = st.selectbox('Choose your model', ['BERT', 'ALBERT', 'DISTILBERT'])
 
     # Metric data load
-    metrics_df = pd.read_csv('data/bert_metrics.csv')
-    conf_matrix_df = pd.read_csv('data/bert_confusion_matrix.csv')
+    if model_choice_metric == 'BERT':
+        metrics_df = pd.read_csv('data/bert_metrics.csv')
+        conf_matrix_df = pd.read_csv('data/bert_confusion_matrix.csv')
+    elif model_choice_metric == 'ALBERT':
+        metrics_df = pd.read_csv('data/albert_metrics.csv')
+        conf_matrix_df = pd.read_csv('data/albert_confusion_matrix.csv')
+    else:
+        metrics_df = pd.read_csv('data/distilbert_metrics.csv')
+        conf_matrix_df = pd.read_csv('data/distilbert_confusion_matrix.csv')
 
     # Displaying model metrics as a table
     st.write('### Model Metrics:')

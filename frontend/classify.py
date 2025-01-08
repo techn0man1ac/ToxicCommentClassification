@@ -44,8 +44,12 @@ def classify_page():
 
     if uploaded_file is not None:
         user_comment = uploaded_file.read().decode("utf-8")
+        st.markdown('**Your uploaded text is:**')
+        st.write(user_comment)
 
     user_comment = [user_comment]
+
+    st.markdown('---')
 
     # Detailed toxicity checkbox
     detailed_classification = st.checkbox('Display detailed toxicity')
