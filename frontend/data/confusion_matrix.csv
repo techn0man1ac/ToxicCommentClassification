@@ -1,7 +1,0 @@
-Class,TN,FP,FN,TP
-toxic,36626,348,769,5425
-severe_toxic,42722,49,304,93
-obscene,37090,248,425,5405
-threat,39159,17,55,3937
-insult,37144,253,682,5089
-identity_hate,38932,65,158,4013
