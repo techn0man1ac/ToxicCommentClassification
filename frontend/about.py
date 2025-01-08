@@ -16,7 +16,7 @@ def about_page():
         {"name": "Olena Mishchenko", "role": "Data Scientist", "github": "https://github.com/Alena-Mishchenko"},
         {"name": "Ivan Shkvyr", "role": "Backend Developer", "github": "https://github.com/IvanShkvyr"},
         {"name": "Oleksii Yeromenko", "role": "Frontend Developer", "github": "https://github.com/oleksii-yer"},
-        {"name": "Polina Mamchur", "role": "Creative Director", "github": "https://github.com/polinamamchur"}
+        {"name": "Polina Mamchur", "role": "SCRUM Master, Creative Director", "github": "https://github.com/polinamamchur"}
     ]
 
     # Display team members in columns
