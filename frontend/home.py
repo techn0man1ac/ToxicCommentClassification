@@ -42,7 +42,8 @@ word embeddings.
 
 # Dataset
 
-We use [Toxic Comment Classification Challenge]() dataset for training machine learning models. 
+We use [Toxic Comment Classification Challenge](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main?tab=readme-ov-file#-dataseteda) 
+dataset for training machine learning models. 
 The dataset have types of toxicity:
 - Toxic
 - Severe_toxic
@@ -78,4 +79,10 @@ contributors are listed in the license text.'''
     for col, logo_path in zip(columns, logo_paths):
         with col:
             st.image(logo_path, width=2000)
-            
+
+    st.markdown('---')
+        
+    st.markdown('''# 👏 Acknowledgments
+This project was developed by a team of professionals as a graduation thesis of the [GoIT](https://goit.global/) 
+**Python Data Science and Machine Learning** course.
+Thank you for exploring our project! Together, we can make online spaces healthier and more respectful.''')
