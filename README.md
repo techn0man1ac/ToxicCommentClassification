@@ -38,6 +38,10 @@ The project started with design development. First, design a [prototype of user 
 
 Creative director create a visually appealing application, as well as to ensure the presentation of the project to stakeholders. By focusing on both UI/UX and presentation design was able to bring the team's vision to life and effectively communicate the [value of the project](https://github.com/techn0man1ac/ToxicCommentClassification/tree/main/design).
 
+A presentation on the project has been developed and can be viewed here(in PDF format):
+
+https://github.com/techn0man1ac/ToxicCommentClassification/blob/main/design/Presentation/ToxicCommentClassification.pdf
+
 # 🛠️ Technologies
 - 🖼️ [Figma](https://www.figma.com/): Online interface development and prototyping service with the ability to organize collaborative work
 - 🐍 [Python](https://www.python.org/): The application was developed in the [Python 3.11.8](https://www.python.org/downloads/release/python-3118/) programming language
@@ -262,7 +266,7 @@ After that, all the necessary files will be downloaded from [DockerHub](https://
 
 Open http://localhost:8501 in your browser.
 
-## Like are pro 💪
+## Like a pro 💪
 
 This way need from you, to have some skills with command line, GitHub and Docker.
 
@@ -296,7 +300,7 @@ After launching the application, you will see the project's home tab with a desc
 
 ![Models test](https://raw.githubusercontent.com/techn0man1ac/ToxicCommentClassification/refs/heads/main/IMGs/appTests.png)
 
-The application interface is intuitive and user-friendly. The application is also able to classify text files in the txt format.
+The application interface is intuitive and user-friendly.
 
 The structure of the tabs is as follows:
 - `Home` - Here you can find a description of the app, the technologies used for its operation, the mission and vision of the project, and acknowledgments
